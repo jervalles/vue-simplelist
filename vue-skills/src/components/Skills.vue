@@ -1,15 +1,22 @@
 <template>
   <div class="hello">
-Skills
+ {{ name }}
+{{ btnState ? 'Yes' : 'No'}}
+ <button v-on:click="btnState=!btnState">Change Name</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Skills',
-  props: {
+  data() {
+    return {
+      name: 'Coursetro',
+      btnState: true
+    }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -5,12 +5,13 @@
         <input type="text" placeholder="Enter a skill you have.." v-model="skill">
         <div class="advanced">Advanced
           <input type="checkbox" id="checkbox" v-model="checked">
+          <button type="submit">Validate</button>
         </div>
       </form>
         <p class="preview" v-if="skill.length > 0"> {{ skill }}</p>
       <ul>
         <li v-for="(data, index) in skills" :key='index'>{{ index }}. {{ data.skill }} 
-          <span v-if="data.checked">Advanced</span>
+          <span v-if="data.checked">- Advanced</span>
         </li>
       </ul>
 <!-- 

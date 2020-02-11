@@ -1,14 +1,22 @@
 <template>
   <div class="hello">
     <div class="holder">
+      <form @submit.prevent="addSkill">
+        <input type="text" placeholder="Enter a skill you have.." v-model="skill">
+      </form>
+        <p class="preview" v-if="skill.length > 0"> {{ skill }}</p>
       <ul>
         <li v-for="(data, index) in skills" :key='index'>{{ index }}. {{ data.skill }}</li>
       </ul>
-
+<!-- 
 <p v-if="skills.length > 1">You have more than 1 skills</p>
 <p v-else>You have less than or equal to 1 skill</p>
-
-       </div>
+-->
+<!-- 
+      <div v-bind:class="alertObject" v-if="alertObject.alert">THIS IS AN ALERT</div>
+-->
+      <p>These are the skills that you possess.</p>
+    </div>
   </div>
 </template>
 
@@ -17,10 +25,22 @@ export default {
   name: 'Skills',
   data() {
     return {
+      skill: '',
       skills: [
         { "skill": "Vue.js" },
         { "skill": "Frontend Developer" }
-      ]
+      ],
+      /*
+      alertObject: {
+        alert: true
+      }
+      */
+    }
+  },
+  methods: {
+    addSkill() {
+      this.skills.push({skill: this.skill}),
+      this.skill = ''
     }
   }
 }
@@ -28,19 +48,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style src="./Skills.css" scoped />

@@ -64,10 +64,12 @@ export default {
   },
   methods: {
     addSkill() {
-      this.skills.push({skill: this.skill, checked: this.checked}),
-      this.skill = '',
-      console.log('This checkbox value is: '+this.checked),
-      this.checked = false;
+      if (this.skill.length >= 3) {
+        this.skills.push({skill: this.skill, checked: this.checked}),
+        this.skill = '',
+        console.log('This checkbox value is: '+this.checked),
+        this.checked = false;
+      } 
     }
   }
 }

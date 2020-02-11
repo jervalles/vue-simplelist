@@ -63,3 +63,8 @@ input {
 #checkbox {
     width: 12px;
 }
+
+.error {
+    background-color: rgb(235, 132, 48);
+    width: 100%;
+}

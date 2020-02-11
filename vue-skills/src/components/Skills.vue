@@ -2,7 +2,11 @@
   <div class="hello">
     <div class="holder">
       <form @submit.prevent="addSkill">
-        <input type="text" placeholder="Enter a skill you have.." v-model="skill">
+        <ValidationProvider rules="min:3" v-slot="{ errors }">
+          <input type="text" placeholder="Enter a skill you have.." name="skill" v-model="skill" />
+          <div class="error">{{ errors[0] }}</div>
+        </ValidationProvider>
+        
         <div class="advanced">Advanced
           <input type="checkbox" id="checkbox" v-model="checked">
           <button type="submit">Validate</button>
@@ -27,8 +31,24 @@
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate';
+import { extend } from 'vee-validate';
+
+extend('min', {
+    validate(value, args) {
+      if (value.length >= args.length) {
+        return true;
+      }
+      return 'Please enter 3 characters min';
+},
+  params: ['length']
+});
+
 export default {
   name: 'Skills',
+  components: {
+    ValidationProvider
+  },
   data() {
     return {
       checked: false,

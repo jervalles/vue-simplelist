@@ -52,3 +52,13 @@ input {
     margin-top: 0px;
     color: #3E5252;
 }
+
+.advanced {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#checkbox {
+    width: 12px;
+}
